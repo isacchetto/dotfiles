@@ -1,0 +1,122 @@
+
+# Show warnings and errors
+options(showWarnCalls=T, showErrorCalls=T)
+
+# Set Prompt
+options(prompt="R> ")
+
+# No scientific notation.
+options(scipen=5)
+
+# Set default number of digits.
+options(digits=7)
+
+# Auto-completion for package names.
+utils::rc.settings(ipck=TRUE)
+
+# If no R_HISTFILE environment variable, set default
+if (Sys.getenv("R_HISTFILE") == "") {
+    Sys.setenv(R_HISTFILE=file.path(Sys.getenv("HOME"), ".Rhistory"))
+}
+
+# More history
+Sys.setenv(R_HISTSIZE='100000')
+
+
+
+.First <- function() {
+    cat("\n Rrrr! The statistics program for Pirates !\n\n")
+    # do not print more than 1000 lines
+    options(max.print=1000)
+    # Set default CRAN mirror
+    options(repos=c(CRAN="https://cran.mirror.garr.it/CRAN/"))
+    # Load history
+    if (!any(commandArgs()=='--no-readline') && interactive()){
+        require(utils)
+        # try(loadhistory(Sys.getenv("R_HISTFILE")))
+        try({
+            loadhistory(Sys.getenv("R_HISTFILE"))
+            cat("History loaded from", Sys.getenv("R_HISTFILE"), "\n")
+        })
+    }
+}
+
+.Last <- function() {
+    cat("\n Rrrr! Avast Ye, YO HO!\n\n")
+    # Save history
+    if (!any(commandArgs()=='--no-readline') && interactive()){
+        require(utils)
+        # try(savehistory(Sys.getenv("R_HISTFILE")))
+        try({
+            savehistory(Sys.getenv("R_HISTFILE"))
+            cat("History saved to", Sys.getenv("R_HISTFILE"), "\n")
+        })
+    }
+}
+
+
+# Invisible environment to mask defined functions
+.env <- new.env()
+
+# Override q() to not save by default.
+# Same as saying q("no")
+.env$q <- function (save="no", ...) {
+    quit(save=save, ...)
+}
+
+# Attach the environment to enable functions.
+attach(.env, warn.conflicts=FALSE)
+
+
+# ---------- My Environments ----------
+#
+# Rather than starting R from within different directories, I prefer to
+# switch my "environment" easily with these functions.  An "environment" is
+# simply a directory that contains analysis of a particular topic.
+# Example usage:
+# > load.env("markets")  # Load US equity markets analysis environment
+# > # ... edit some .r files in my environment
+# > reload()             # Re-source .r/.R files in my environment
+#
+# On next startup of R, I will automatically be placed into the last
+# environment I entered
+
+# # My current environment
+# .curr.env = NULL
+#
+# # File contains name of the last environment I entered
+# .last.env.file = file.path(path.expand("~"), ".Rlastenv")
+#
+# # Parent directory where all of my "environment"s are contained
+# .parent.env.dir = file.path(path.expand("~"), ".Renvs")
+#
+# # Create parent directory if it doesn't already exist
+# if (!file.exists(.parent.env.dir))
+#   dir.create(.parent.env.dir)
+#
+# load.env <- function (string, save=TRUE) {
+#   # Load all .r/.R files in <.parent.env.dir>/<string>/
+#   setwd(file.path(.parent.env.dir, string))
+#   for (file in dir()) {
+#     if (substr(file, nchar(file)-1, nchar(file)+1) %in% c(".r", ".R"))
+#       source(file)
+#   }
+#   .curr.env <<- string
+#   # Save current environment name to file
+#   if (save == TRUE) writeLines(.curr.env, .last.env.file)
+#   # Let user know environment switch was successful
+#   print (paste(" -- in ", string, " environment -- "))
+# }
+#
+# # "reload" current environment.
+# reload <- resource <- function () {
+#   if (!is.null(.curr.env))
+#     load.env(.curr.env, save=FALSE)
+#   else
+#     print (" -- not in environment -- ")
+# }
+#
+# # On startup, go straight to the environment I was last working in
+# if (interactive() && file.exists(.last.env.file)) {
+#   load.env(readLines(.last.env.file))
+# }

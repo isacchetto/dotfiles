@@ -1,0 +1,72 @@
+default_python: 3.12
+
+# # channels (sequence: primitive)
+# #   aliases: channel
+# #   env var string delimiter: ','
+# #   The list of conda channels to include for relevant operations.
+# # 
+channels:
+  - defaults
+  - conda-forge
+  - bioconda
+
+# # channel_priority (ChannelPriority)
+# #   Accepts values of 'strict', 'flexible', and 'disabled'. The default
+# #   value is 'flexible'. With strict channel priority, packages in lower
+# #   priority channels are not considered if a package with the same name
+# #   appears in a higher priority channel. With flexible channel priority,
+# #   the solver may reach into lower priority channels to fulfill
+# #   dependencies, rather than raising an unsatisfiable error. With channel
+# #   priority disabled, package version takes precedence, and the
+# #   configured priority of channels is used only to break ties. In
+# #   previous versions of conda, this parameter was configured as either
+# #   True or False. True is now an alias to 'flexible'.
+# # 
+channel_priority: flexible
+# channel_priority: strict
+
+# # auto_update_conda (bool)
+# #   Auto Update Conda any time a user updates 
+# #   or installs a package in the root environment
+# #
+auto_update_conda: True
+
+# # update_dependencies (bool)
+# #   When True, automatically update dependencies when installing packages that
+# #   require a newer version of a dependency than is currently installed.
+# #
+update_dependencies: True
+
+# # auto_activate_base (bool)
+# #   Automatically activate the base environment during shell
+# #   initialization (eval "$($CONDA_EXE shell.posix activate)")
+# # 
+auto_activate_base: False
+
+# # auto_stack (int)
+# #   Implicitly use --stack when using activate if current level of nesting
+# #   (as indicated by CONDA_SHLVL environment variable) is less than or
+# #   equal to specified value. 0 or false disables automatic stacking, 1 or
+# #   true enables it for one level.
+# # 
+auto_stack: 1
+
+# # default_threads (int)
+# #   Threads to use by default for parallel operations. Default is None,
+# #   which allows operations to choose themselves. This value affects:
+# #   * repodata_threads - for fetching/loading repodata
+# #   * verify_threads - for verifying package contents in transactions
+# #   * execute_threads - for carrying out the unlinking and linking steps
+# # 
+default_threads: 4
+
+# # fetch_threads (int)
+# #   Threads to use when downloading packages. When not set, defaults to None,
+# #   which uses the default ThreadPoolExecutor behavior.
+# # 
+fetch_threads: 4
+
+# # anaconda_anon_usage (bool)
+# #   When True, conda will report anonymous usage data to Anaconda, Inc.
+# #
+anaconda_anon_usage: False

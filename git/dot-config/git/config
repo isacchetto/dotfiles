@@ -1,0 +1,14 @@
+[user]
+	name = isacchetto
+	email = 113353283+isacchetto@users.noreply.github.com
+[core]
+	editor = emacs
+[color]
+	ui = true
+[alias]
+    l  = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --
+
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false

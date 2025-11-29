@@ -1,0 +1,8 @@
+echo ".zshenv execution starts.."
+
+# Disable shell session, default behavior from /etc/zshrc_Apple_Terminal
+SHELL_SESSIONS_DISABLE=1
+
+# Change zsh directory
+export ZDOTDIR=${XDG_CONFIG_HOME:-$HOME/.config}/zsh
+echo ".zshenv execution stops.."

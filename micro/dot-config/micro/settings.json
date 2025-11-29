@@ -1,0 +1,14 @@
+{
+    "colorscheme": "zenburn",
+    "diffgutter": true,
+    "ft:html": {
+        "tabsize": 4
+    },
+    "rmtrailingws": true,
+    "savecursor": true,
+    "scrollbar": true,
+    "scrollspeed": 1,
+    "softwrap": true,
+    "tabmovement": true,
+    "tabstospaces": true
+}
