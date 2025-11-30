@@ -1,0 +1,64 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "restore_on_startup": "last_workspace",
+  "minimap": {
+    "show": "auto"
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "cursor_shape": "bar",
+  "on_last_window_closed": "quit_app",
+  "edit_predictions": {
+    "mode": "eager"
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "agent": {
+    "dock": "left",
+    "play_sound_when_agent_done": false,
+    "always_allow_tool_actions": true,
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-codex"
+    },
+    "model_parameters": []
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "base_keymap": "VSCode",
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": "One Dark",
+  
+  "tabs": {
+    "file_icons": true,        // Mostra icone dei file nei tab
+    "git_status": true,        // Mostra lo stato git (modificato, nuovo, etc)
+    "show_diagnostics": "all"  // Mostra errori/warning nei tab (pallini rossi/gialli)
+  },
+  // Errori mostrati accanto al codice
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150
+    }
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  }
+}
