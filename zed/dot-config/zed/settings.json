@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "hide_hidden": false
+  },
   "restore_on_startup": "last_workspace",
   "minimap": {
     "show": "auto"
@@ -60,5 +63,6 @@
   "indent_guides": {
     "enabled": true,
     "coloring": "indent_aware"
-  }
+  },
+  "file_scan_inclusions": ["**/.git"]
 }
