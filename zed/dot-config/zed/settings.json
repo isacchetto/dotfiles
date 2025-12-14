@@ -31,10 +31,10 @@
     "dock": "left",
     "play_sound_when_agent_done": false,
     "always_allow_tool_actions": true,
-    "default_profile": "write",
+    "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-codex"
+      "model": "gemini-3-pro-preview"
     },
     "model_parameters": []
   },
