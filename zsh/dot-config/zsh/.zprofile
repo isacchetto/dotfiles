@@ -1,14 +1,8 @@
 echo ".zprofile execution starts.."
 
-# da finire
-# export LANG="it_IT.UTF-8"
-# export LC_COLLATE="en_GB.UTF-8"
-# export LC_CTYPE="en_GB.UTF-8"
-# export LC_MESSAGES="en_GB.UTF-8"
-# export LC_MONETARY="en_US.UTF-8"
-# export LC_NUMERIC="en_GB.UTF-8"
-# export LC_TIME="en_GB.UTF-8"
-# export LC_ALL="it_IT.UTF-8"
+# Locale settings
+export LANG="it_IT.UTF-8"
+export LC_ALL="it_IT.UTF-8"
 
 # XDG Base Directory Specification
 export XDG_DATA_HOME=$HOME/.local/share

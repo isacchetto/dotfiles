@@ -1,12 +1,13 @@
-alias grep='grep --color=auto '
-alias ls="ls -Gph"
+# ALIASES
+
+alias grep='grep --color=auto'
+
+# ls aliases
+alias ls='ls --color=auto -ph'
     # -p = '/' on directory
-    # -G = Enable colorized output
+    # -G = Enable colorized output (on macOS)
     # -h = use unit suffixes: Byte, Kilobyte, Megabyte.. with -l
-# some more ls aliases
 alias ll='ls -laF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # rsync filtering (merge multiple filter roles from a single file) + @1 to preserve modification times less aggressively
 alias rsync='rsync -@1 --filter=". ${XDG_CONFIG_HOME:-$HOME/.config}/rsync/rsync-filter"'

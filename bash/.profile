@@ -1,3 +1,4 @@
+# ~/.profile: executed by Bourne-compatible login shells.
 
 # XDG Base Directory Specification
 export XDG_DATA_HOME=$HOME/.local/share
@@ -22,7 +23,6 @@ fi
 PATH="/usr/local/sbin:$PATH"
 export PATH
 
-
 # brew completion
 if type brew &>/dev/null
 then
@@ -37,7 +37,6 @@ then
     done
   fi
 fi
-
 
 # if running bash
 if [ "${BASH-no}" != "no" ]; then

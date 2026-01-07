@@ -45,17 +45,17 @@ git_branch() {
 
 # TERMINAL PROMPT
 # Format: user@host:~/path
-PS1="\[\e[0;93m\]\u\[\e[m\]"                 # username
-PS1+="\[\e[0;94m\]@\h\[\e[m\]"               # hostname
+PS1="\[\e[1;31m\]\u\[\e[m\]"                 # username
+PS1+="\[\e[1;35m\]@\h\[\e[m\]"               # hostname
 PS1+=":"
-PS1+="\[\e[0;95m\]\w\[\e[m\]"                # full working dir
+PS1+="\[\e[1;93m\]\w\[\e[m\]"                # full working dir
 # PS1+="\[\e[0;92m\]\$(git_branch)\[\e[m\]"    # current branch (optional)
 PS1+=" % "                                   # end prompt (keeps a space after %)
 export PS1;
 
 # enable color support
 export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+export LSCOLORS=fxexgxgxcxegegxcxcxfxf
 eval "$(dircolors)"
 
 # Conda
