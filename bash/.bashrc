@@ -76,5 +76,4 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-
 echo ".bashrc execution stops.."
