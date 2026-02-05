@@ -17,3 +17,7 @@ alias ll='ls -laF'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+# rsync filtering (merge multiple filter roles from a single file) + @1 to preserve modification times less aggressively
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/rsync/rsync-filter" ]] && \
+alias rsync='rsync -@1 --filter=". ${XDG_CONFIG_HOME:-$HOME/.config}/rsync/rsync-filter"'
