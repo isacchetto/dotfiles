@@ -1,5 +1,5 @@
 iStatMenus/*
 bash/.bash_aliases.server
-ssh/*
+ssh/dot-ssh/config
 Stats/*
 zsh/dot-config/zsh/.zsh_history*

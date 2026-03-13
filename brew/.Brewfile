@@ -4,7 +4,7 @@
 # brew "openssh"
 # brew "bash"
 # brew "zsh"
-# brew "coreutils"
+brew "coreutils"
 
 # UTILS
 brew "wget" # Internet file retriever
@@ -19,6 +19,9 @@ brew "wakeonlan" # Sends magic packets to wake up network-devices
 # TOOLS
 brew "ffmpeg" # Play, record, convert, and stream audio and video
 brew "exiftool" # Perl lib for reading and writing EXIF metadata
+brew "csvkit" # Utilities for converting to and working with CSV, the king of tabular file formats
+brew "shellcheck" # Static analysis tool for shell scripts
+brew "geoip2fast" # Fast GeoIP2 and GeoLite2 database reader 
 # brew "ghostscript"
 # brew "imagemagick"
 # brew "docker"
