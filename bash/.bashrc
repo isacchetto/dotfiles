@@ -59,7 +59,9 @@ export LSCOLORS=fxexgxgxcxegegxcxcxfxf
 eval "$(dircolors)"
 
 # Conda
-# my_conda
+if [[ "$HOSTNAME" == "cibio-cm6" ]]; then
+    my_conda
+fi
 
 # Auto-completion based on history, on up and down arrows
 bind '"\e[A": history-search-backward'

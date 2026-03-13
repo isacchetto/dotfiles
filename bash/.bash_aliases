@@ -1,8 +1,10 @@
 # ALIASES
 
-# Anaconda3
-# alias my_conda='source /shares/CIBIO-Storage/CM/scratch/users/isacco.cenacchi/tools/miniconda3/.conda'
-# alias lab_conda='source /shares/CIBIO-Storage/CM/scratch/tools/20231211_2023.09_anaconda3/.conda'
+# minconda3
+if [[ "$HOSTNAME" == "cibio-cm6" ]]; then
+    alias my_conda='source /shares/CIBIO-Storage/CM/scratch/users/isacco.cenacchi/tools/miniconda3/.conda'
+    alias lab_conda='source /shares/CIBIO-Storage/CM/scratch/tools/20231211_2023.09_anaconda3/.conda'
+fi
 
 alias grep='grep --color=auto'
 
