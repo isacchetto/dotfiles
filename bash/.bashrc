@@ -58,10 +58,6 @@ export CLICOLOR=1
 export LSCOLORS=fxexgxgxcxegegxcxcxfxf
 eval "$(dircolors)"
 
-# Conda
-if [[ "$HOSTNAME" == "cibio-cm6" ]]; then
-    my_conda
-fi
 
 # Auto-completion based on history, on up and down arrows
 bind '"\e[A": history-search-backward'
@@ -76,6 +72,11 @@ bind '"\e[B": history-search-forward'
 # ALIASES
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# Conda
+if [[ "$HOSTNAME" == "cibio-cm6" ]]; then
+    my_conda
 fi
 
 echo ".bashrc execution stops.."
