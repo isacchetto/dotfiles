@@ -1,0 +1,12 @@
+name: python_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
