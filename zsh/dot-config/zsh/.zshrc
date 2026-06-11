@@ -36,8 +36,9 @@ export LSCOLORS=fxexgxgxcxegegxcxcxfxf #MonokaiPro  (fx ex gx gx cx eg eg ac ac 
     # x     default foreground or background
 
 
-# Stderr in Red
-exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
+# Stderr in Red and with a beep (\a):
+exec 2>>( while read X; do print "\a\e[91m${X}\e[0m" > /dev/tty; done & )
+# exec 2>>(sed $'s/.*/\a\e[91m&\e[0m/' > /dev/tty &)
 
 # Custom Variables:
 # export EDITOR=micro

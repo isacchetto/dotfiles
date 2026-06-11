@@ -1,0 +1,11 @@
+name: pandas-analysis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pandas
+  - matplotlib
+  - jupyterlab
+  - notebook
+  - ipykernel

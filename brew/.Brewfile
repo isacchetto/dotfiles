@@ -7,6 +7,7 @@
 brew "coreutils"
 
 # UTILS
+brew "gh" # GitHub CLI tool
 brew "wget" # Internet file retriever
 brew "rsync" # Utility that provides fast incremental file transfer
 brew "stow" # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -74,7 +75,10 @@ cask "numi" # Calculator and converter application
 cask "the-unarchiver" # Unpacks archive files
 cask "balenaetcher" # Tool to flash OS images to SD cards & USB drives
 cask "pearcleaner"
-cask "opencore-patcher" 
+cask "opencore-patcher"
+cask "codex-app" # AI-powered code editor
+cask "codex" # Codex CLI tool
+cask "copilot-cli" # GitHub Copilot CLI tool
 
 # cask "slack"
 # cask "cursor"
