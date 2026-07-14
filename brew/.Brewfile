@@ -7,6 +7,7 @@
 brew "coreutils"
 
 # UTILS
+brew "node" # JavaScript runtime environment
 brew "gh" # GitHub CLI tool
 brew "wget" # Internet file retriever
 brew "rsync" # Utility that provides fast incremental file transfer
@@ -22,7 +23,8 @@ brew "ffmpeg" # Play, record, convert, and stream audio and video
 brew "exiftool" # Perl lib for reading and writing EXIF metadata
 brew "csvkit" # Utilities for converting to and working with CSV, the king of tabular file formats
 brew "shellcheck" # Static analysis tool for shell scripts
-brew "geoip2fast" # Fast GeoIP2 and GeoLite2 database reader 
+brew "geoip2fast" # Fast GeoIP2 and GeoLite2 database reader
+brew "defuddle" # Convert web pages to Markdown
 # brew "ghostscript"
 # brew "imagemagick"
 # brew "docker"
@@ -76,7 +78,7 @@ cask "the-unarchiver" # Unpacks archive files
 cask "balenaetcher" # Tool to flash OS images to SD cards & USB drives
 cask "pearcleaner"
 cask "opencore-patcher"
-cask "codex-app" # AI-powered code editor
+cask "chatgpt" # ChatGPT desktop client
 cask "codex" # Codex CLI tool
 cask "copilot-cli" # GitHub Copilot CLI tool
 
