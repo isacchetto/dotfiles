@@ -29,19 +29,19 @@ channel_priority: flexible
 # #   Auto Update Conda any time a user updates 
 # #   or installs a package in the root environment
 # #
-auto_update_conda: True
+auto_update_conda: true
 
 # # update_dependencies (bool)
 # #   When True, automatically update dependencies when installing packages that
 # #   require a newer version of a dependency than is currently installed.
 # #
-update_dependencies: True
+update_dependencies: true
 
 # # auto_activate_base (bool)
 # #   Automatically activate the base environment during shell
 # #   initialization (eval "$($CONDA_EXE shell.posix activate)")
 # # 
-auto_activate_base: False
+auto_activate_base: false
 
 # # auto_stack (int)
 # #   Implicitly use --stack when using activate if current level of nesting
@@ -69,4 +69,5 @@ fetch_threads: 4
 # # anaconda_anon_usage (bool)
 # #   When True, conda will report anonymous usage data to Anaconda, Inc.
 # #
-anaconda_anon_usage: False
+anaconda_anon_usage: false
+auto_activate: true
