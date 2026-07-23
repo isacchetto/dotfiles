@@ -13,6 +13,7 @@ brew "wget" # Internet file retriever
 brew "rsync" # Utility that provides fast incremental file transfer
 brew "stow" # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "wakeonlan" # Sends magic packets to wake up network-devices
+brew "zsh-completions" # Additional completion definitions for Zsh
 # brew "parallel"
 # brew "gnupg"
 # brew "fclones" # Efficient Duplicate File Finder
@@ -26,9 +27,13 @@ brew "shellcheck" # Static analysis tool for shell scripts
 brew "geoip2fast" # Fast GeoIP2 and GeoLite2 database reader
 brew "defuddle" # Convert web pages to Markdown
 # brew "ghostscript"
-# brew "imagemagick"
 # brew "docker"
 # brew "docker-credential-helper"
+brew "imagemagick" # Convert, edit, or compose bitmap images
+brew "poppler" # PDF rendering library
+brew "qpdf" # PDF transformation software
+brew "mupdf-tools" # PDF viewer and toolkit
+brew "jq" # Command-line JSON processor
 
 # PROJECTS
 # brew "gamdl"

@@ -2,7 +2,6 @@ echo ".zprofile execution starts.."
 
 # Locale settings
 export LANG="it_IT.UTF-8"
-export LC_ALL="it_IT.UTF-8"
 
 # XDG Base Directory Specification
 export XDG_DATA_HOME=$HOME/.local/share

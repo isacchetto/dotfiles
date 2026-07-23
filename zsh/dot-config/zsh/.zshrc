@@ -2,6 +2,20 @@ echo ".zshrc execution starts.."
 
 # Prompt:
 export PS1='%B%F{1}%n:%f%F{3}%~%f%b %# ' #MonokaiPro
+export PROMPT='%B%F{red}%n%f%b%B%F{magenta}@%m%f%b:%B%F{yellow}%~%f%b %% '
+# Prompt principale
+if [[ -n ${SSH_CONNECTION-} ]]; then
+    PROMPT='%F{red}%n@%m%f:%F{yellow}%~%f'
+else
+    PROMPT='%F{yellow}%~%f'
+fi
+# Vai a capo e mostra il prompt
+PROMPT+=$'\n'
+PROMPT+='%B%F{green}❯%f%b '
+
+# Prompt di continuazione
+export PROMPT2='%B%F{green}❯%f%b '
+
     # %(?.%F{green}√.%F{red}?%?)%f
 #export PS1='%B%F{51}%n:%f%F{35}%~%f%b %# ' #Dracula
     # %B%F{51}%n%f%b
@@ -9,31 +23,43 @@ export PS1='%B%F{1}%n:%f%F{3}%~%f%b %# ' #MonokaiPro
 
 #export PS2='> '
 
+# Load LS_COLORS (for Linux or GNU ls) and/or LSCOLORS (for macOS/BSD)
+case "$OSTYPE" in
+    linux*)
+        (( $+commands[dircolors] )) && eval "$(dircolors -b)"
+        ;;
+    darwin*)
+        # If GNU coreutils (gls, gdircolors, etc.) are installed
+        # (( $+commands[gdircolors] )) && eval "$(gdircolors -b)"
+        # Enable colored output from ls, etc. on FreeBSD-based systems
+        export CLICOLOR=1
+        export LS_COLORS='di=35:ln=34:so=36:pi=36:ex=32:bd=34;46:cd=34;46:su=42:sg=42:tw=45:ow=45' #MonokaiPro
+        export LSCOLORS='fxexgxgxcxegegxcxcxfxf' #MonokaiPro  (fx ex gx gx cx eg eg ac ac af af)
+            #            exfxcxdxbxegedabagacad (default)      1  2  3  4  5  6  7  8  9  10 11
+            #
+            # Color Legend:                                         Pos legend (ab: a is the foregroundcolor and b is the background color):
+            # a     black                                           1.   directory
+            # b     red                                             2.   symbolic link
+            # c     green                                           3.   socketq
+            # d     brown                                           4.   pipe
+            # e     blue                                            5.   executable
+            # f     magenta                                         6.   block special
+            # g     cyan                                            7.   character special
+            # h     light grey                                      8.   executable with setuid bit set
+            # A     bold black, usually shows up as dark grey       9.   executable with setgid bit set
+            # B     bold red                                        10.   directory writable to others, with sticky bit
+            # C     bold green                                      11.   directory writable to others, without sticky
+            # D     bold brown, usually shows up as yellow
+            # E     bold blue
+            # F     bold magenta
+            # G     bold cyan
+            # H     bold light grey; looks like bright white
+            # x     default foreground or background
+        ;;
+esac
+
 # Autoload Zsh Function
 autoload -U colors && colors  # makes color constants available
-
-# Enable colors:
-export CLICOLOR=1 # enable colored output from ls, etc. on FreeBSD-based systems
-export LSCOLORS=fxexgxgxcxegegxcxcxfxf #MonokaiPro  (fx ex gx gx cx eg eg ac ac af af)
-# exfxcxdxbxegedabagacad (default)                   1  2  3  4  5  6  7  8  9  10 11
-    # Color Legend:                                         Pos legend (ab: a is the foregroundcolor and b is the background color):
-    # a     black                                           1.   directory
-    # b     red                                             2.   symbolic link
-    # c     green                                           3.   socketq
-    # d     brown                                           4.   pipe
-    # e     blue                                            5.   executable
-    # f     magenta                                         6.   block special
-    # g     cyan                                            7.   character special
-    # h     light grey                                      8.   executable with setuid bit set
-    # A     bold black, usually shows up as dark grey       9.   executable with setgid bit set
-    # B     bold red                                        10.   directory writable to others, with sticky bit
-    # C     bold green                                      11.   directory writable to others, without sticky
-    # D     bold brown, usually shows up as yellow
-    # E     bold blue
-    # F     bold magenta
-    # G     bold cyan
-    # H     bold light grey; looks like bright white
-    # x     default foreground or background
 
 
 # Stderr in Red and with a beep (\a):
@@ -56,23 +82,31 @@ setopt HIST_IGNORE_ALL_DUPS         #Not save duplicate in history
 # setopt HIST_FIND_NO_DUPS            #not work :(
 
 
-# Brew Completions
-# [ type brew &>/dev/null ] && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # Basic auto/tab complete:
-[ ! -d "$XDG_CACHE_HOME/zsh" ] && mkdir -m 700 "$XDG_CACHE_HOME/zsh"
-[ ! -d "$XDG_CACHE_HOME/zsh/zcompcache" ] && mkdir -m 700 "$XDG_CACHE_HOME/zsh/zcompcache"
-zstyle :compinstall filename "$XDG_CONFIG_HOME/zsh/.zshrc"
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-zstyle ':completion:*' list-colors 'fxexgxgxcxegegacacafaf' ignored-patterns 'blockdev' menu select
+
+# Directory della cache
+mkdir -p -m 700 "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+# Inizializza il completamento e salva il dump nella cache
+autoload -Uz compinit
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache/zcompdump"
+# Menu interattivo
 zmodload zsh/complist
-_comp_options+=(globdots)           # Include hidden files.
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
-zstyle ':completion:*' format '%B%F{2}%d%f%b'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+# Mostra anche i file nascosti
+_comp_options+=(globdots)
+# Prima matching esatto, poi case-insensitive
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+# Gruppi e descrizioni
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:default' menu select=2
-autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompcache/zcompdump"
+zstyle ':completion:*:descriptions' format '%B%F{2}%d%f%b'
+zstyle ':completion:*' verbose yes
+# Colori coerenti con ls
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Percorso usato solo dal wizard compinstall
+zstyle ':compinstall' filename "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshrc"
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
