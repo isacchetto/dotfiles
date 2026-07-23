@@ -31,7 +31,5 @@ then
 fi
 
 # if running bash
-if [ "${BASH-no}" != "no" ]; then
-    # include .bashrc if it exists and is readable
-    [ -r $HOME/.bashrc ] && . $HOME/.bashrc
-fi
+# include .bashrc if it exists and is readable
+[ -n "${BASH_VERSION-}" ] && [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"

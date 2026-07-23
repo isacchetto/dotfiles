@@ -69,10 +69,8 @@ bind '"\e[B": history-search-forward'
 # command 2> >(while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done)
 # command 2> >(xargs -0 printf "\e[31m%s\e[m" >&2)
 
-# ALIASES
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# ALIASES, if existent and have read permission.
+[ -r ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases
 
 # Conda
 if [[ "$HOSTNAME" == "cibio-cm6" ]]; then

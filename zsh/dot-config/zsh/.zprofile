@@ -30,6 +30,10 @@ export XDG_CONFIG_DIRS=/etc/xdg
 [[ -d "$HOME/.bin" ]] && PATH="$HOME/.bin:$PATH"
 export PATH
 
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+
 (( $+commands[brew] )) && eval $(brew shellenv)
 (( $+commands[conda] )) && eval "$(conda "shell.$(basename "${SHELL}")" hook)"
 
