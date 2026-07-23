@@ -5,9 +5,9 @@ export PS1='%B%F{1}%n:%f%F{3}%~%f%b %# ' #MonokaiPro
 export PROMPT='%B%F{red}%n%f%b%B%F{magenta}@%m%f%b:%B%F{yellow}%~%f%b %% '
 # Prompt principale
 if [[ -n ${SSH_CONNECTION-} ]]; then
-    PROMPT='%F{red}%n@%m%f:%F{yellow}%~%f'
+    PROMPT='%B%F{red}%n%f%b%B%F{magenta}@%m%f%b:%B%F{yellow}%~%f%b'
 else
-    PROMPT='%F{yellow}%~%f'
+    PROMPT='%B%F{yellow}%~%f%b'
 fi
 # Vai a capo e mostra il prompt
 PROMPT+=$'\n'

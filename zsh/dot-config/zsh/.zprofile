@@ -24,14 +24,16 @@ export XDG_CONFIG_DIRS=/etc/xdg
 # typeset -U path PATH
 # path=($XDG_RUNTIME_DIR $path)
 
-PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+# PATH
+[[ -d "/usr/local/sbin" ]] && PATH="/usr/local/sbin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/.bin" ]] && PATH="$HOME/.bin:$PATH"
+export PATH
 
-eval $(brew shellenv)
-eval "$(conda "shell.$(basename "${SHELL}")" hook)"
+(( $+commands[brew] )) && eval $(brew shellenv)
+(( $+commands[conda] )) && eval "$(conda "shell.$(basename "${SHELL}")" hook)"
 
 # Load environment variables if existent and have read permission.
 [ -r ${HOME}/.env ] && . ${HOME}/.env
-
-export PATH
 
 echo ".zprofile execution stops.."

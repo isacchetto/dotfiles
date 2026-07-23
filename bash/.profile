@@ -5,22 +5,14 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_STATE_HOME=$HOME/.local/state
-export XDG_RUNTIME_DIR=""
+# [[ -z ${XDG_RUNTIME_DIR-} && -d /run/user/$UID ]] && export XDG_RUNTIME_DIR="/run/user/$UID"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
 
 # PATH
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-PATH="/usr/local/sbin:$PATH"
+[[ -d "/usr/local/sbin" ]] && PATH="/usr/local/sbin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/.bin" ]] && PATH="$HOME/.bin:$PATH"
 export PATH
 
 # brew completion

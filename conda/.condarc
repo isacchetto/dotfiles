@@ -37,11 +37,11 @@ auto_update_conda: true
 # #
 update_dependencies: true
 
-# # auto_activate_base (bool)
+# # auto_activate (bool)
 # #   Automatically activate the base environment during shell
 # #   initialization (eval "$($CONDA_EXE shell.posix activate)")
 # # 
-auto_activate_base: false
+auto_activate: true
 
 # # auto_stack (int)
 # #   Implicitly use --stack when using activate if current level of nesting
@@ -70,4 +70,3 @@ fetch_threads: 4
 # #   When True, conda will report anonymous usage data to Anaconda, Inc.
 # #
 anaconda_anon_usage: false
-auto_activate: true
