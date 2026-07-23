@@ -1,4 +1,5 @@
 # ~/.profile: executed by Bourne-compatible login shells.
+echo ".profile execution starts.."
 
 # XDG Base Directory Specification
 export XDG_DATA_HOME=$HOME/.local/share
@@ -33,3 +34,5 @@ fi
 # if running bash
 # include .bashrc if it exists and is readable
 [ -n "${BASH_VERSION-}" ] && [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+
+echo ".profile execution stops.."
